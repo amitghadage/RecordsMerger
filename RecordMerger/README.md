@@ -1,9 +1,9 @@
 # Salesforce Record Merger App in lwc
 
 ## About.
-Salesforce app built in lwc to merge two 
+Salesforce app built in lwc to merge two records of any object.
 
-###see demo for more insights
+##see demo for more insights
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Sf66WS1GsIQ
 " target="_blank"><img src="http://img.youtube.com/vi/Sf66WS1GsIQ/0.jpg" 

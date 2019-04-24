@@ -1,0 +1,46 @@
+<template>
+    <template if:true={comparisondata}>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Select Master">
+                            Master                            
+                        </div>
+                    </th>
+                    <th class="" scope="col">
+                            <lightning-input type="radio"  name="master" value="record1" onchange={handleMasterChange} checked ></lightning-input>
+                    </th>
+                    <th class="" scope="col">
+                            <lightning-input type="radio"  name="master" value="record2" onchange={handleMasterChange} ></lightning-input>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={comparisondata} for:item="item">
+                    <tr key={item.key} class="slds-hint-parent">
+                        <td data-label="Field">
+                            <div class="slds-truncate" title={item.key} id={item.key}>
+                                {item.key}
+                            </div>
+                        </td>
+                        <td data-label="Record 1">
+                            <div class="slds-truncate" title={item.record1Field}>
+                                <!--<lightning-input type="radio" label={item.record1Field} name={item.key} value={item.record1Field} checked={item.isRecord1FieldSelected} ></lightning-input>-->
+                                <input type="radio" value={item.record1Field} name={item.key} checked={item.isRecord1FieldSelected}>{item.record1Field}
+                            </div>
+                        </td>
+                        <td data-label="Record 2">
+                            <div class="slds-truncate" title={item.record2Field}>
+                                <!--<lightning-input type="radio" label={item.record2Field} name={item.key} value={item.record2Field} checked={item.isRecord2FieldSelected} ></lightning-input>-->
+                                <input type="radio" value={item.record2Field} name={item.key} checked={item.isRecord2FieldSelected}>{item.record2Field}
+                            </div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        <button class="slds-button slds-button_neutral" type="button" onclick={handlePrevious}>Previous</button>
+        <button class="slds-button slds-button_neutral" type="button" onclick={handleMerge}>Merge</button>
+    </template>
+</template>

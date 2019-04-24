@@ -1,0 +1,8 @@
+<template>
+    <template if:true={screen1}>
+        <c-record-merger-screen1 ondataselect={handleDataSelect}></c-record-merger-screen1> 
+    </template>
+    <template if:true={screen2}>
+        <c-record-merger-screen2 onprevoous={handlePrevious} selectedrecords={selectedrecords}></c-record-merger-screen2>
+    </template>
+</template>

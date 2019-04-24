@@ -1,0 +1,51 @@
+<template>
+    <lightning-card icon-name="custom:custom4" title="Record Merger">
+        <template if:false={objectsList.data}>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
+        <label for="objectList">Select Object</label>
+        <select name="Select Object" data-id="objectList" class="slds-select">
+            <template if:true={objectsList.data}>
+                <template for:each={objectsList.data} for:item="obj">
+                    <option key={obj.value} value={obj.value}>{obj.label}</option>
+                </template>
+            </template>
+        </select>
+        <label for="searchBox">Search</label>
+        <input name="Search" class="slds-input" type="text" data-id="searchBox">
+        <button class="slds-button slds-button_neutral" type="button" onclick={fetchRecords}>Search</button>
+        <template if:true={recordsList}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Select 2 Records">Record Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Record Name">Record Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Id">Id</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={recordsList} for:item="item">
+                        <tr key={item.Id} class="slds-hint-parent">
+                            <td data-label="Select">
+                                <input type="checkbox" name="select" value={item.Id}>
+                            </td>
+                            <td data-label="Record Name">
+                                <div class="slds-truncate" title={item.Name}>{item.Name}</div>
+                            </td>
+                            <td data-label="Id">
+                                <div class="slds-truncate" title={item.Id}>{item.Id}</div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <button class="slds-button slds-button_neutral" type="button" onclick={handleClick}>Next</button>
+        </template>
+    </lightning-card>
+</template>
